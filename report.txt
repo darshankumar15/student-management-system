@@ -1,0 +1,99 @@
+STUDENT MANAGEMENT SYSTEM – CLOUD MINI PROJECT
+
+1. TITLE
+Student Management System using Flask, PostgreSQL and Cloud Deployment
+
+2. ABSTRACT
+The Student Management System is a small web application developed to manage student records digitally. The system allows an authorized user to add, view, edit and delete student information. The application is developed using Python Flask and stores records in PostgreSQL. The application is designed to be deployed on a cloud platform, making it accessible through a web browser without requiring the application to run on every user's computer.
+
+3. PROBLEM STATEMENT
+Manual student record management can require repeated data entry, physical files or locally stored spreadsheets. Such methods can make searching, updating and maintaining records inconvenient. A web-based cloud application provides a centralized way to manage these records.
+
+4. OBJECTIVES
+- Build a simple web-based student management application.
+- Store student records in a relational database.
+- Provide CRUD operations: Create, Read, Update and Delete.
+- Deploy the application on a cloud platform.
+- Learn GitHub-based source code management and cloud deployment.
+
+5. TECHNOLOGIES USED
+Frontend: HTML, CSS
+Backend: Python Flask
+Database: PostgreSQL
+Version Control: Git/GitHub
+Cloud Platform: Render
+
+6. SYSTEM MODULES
+A. Add Student – accepts name, roll number, department, email and marks.
+B. View Students – displays all stored student records.
+C. Edit Student – updates an existing record.
+D. Delete Student – removes a record.
+E. Health Check – confirms that the application is running.
+
+7. DATABASE DESIGN
+Table: students
+- id: primary key
+- name: student name
+- roll_no: unique roll number
+- department: department name
+- email: email address
+- marks: marks from 0 to 100
+
+8. SYSTEM ARCHITECTURE
+User Browser
+      |
+      v
+Cloud Web Service (Flask + Gunicorn)
+      |
+      v
+PostgreSQL Database
+
+9. WORKING
+1. User opens the cloud URL.
+2. Flask serves the home page.
+3. User submits a student form.
+4. Flask validates the input.
+5. The record is inserted into PostgreSQL.
+6. Stored records are displayed on the dashboard.
+7. Edit and Delete operations modify the database.
+8. Changes are visible through the cloud application.
+
+10. CLOUD DEPLOYMENT
+The source code is stored in GitHub. The Render Web Service is connected to the GitHub repository. Render installs the Python dependencies and starts the Flask application using Gunicorn. PostgreSQL is used as the cloud database. Environment variables are used for the database connection and secret key.
+
+11. TEST CASES
+Test 1: Add valid student -> record should be inserted.
+Test 2: Add duplicate roll number -> application should show an error.
+Test 3: Edit student -> updated values should be displayed.
+Test 4: Delete student -> record should disappear.
+Test 5: Open /health -> status should return OK.
+
+12. ADVANTAGES
+- Simple and easy to use.
+- Centralized student records.
+- Accessible through a browser after deployment.
+- Easy to update and maintain.
+- Demonstrates real cloud deployment.
+
+13. LIMITATIONS
+- Basic authentication is not included.
+- It is intended as an academic mini project.
+- Advanced role-based access control is not implemented.
+
+14. FUTURE ENHANCEMENTS
+- Admin login.
+- Student login.
+- Search and filtering.
+- Export to PDF/Excel.
+- Attendance management.
+- Result analytics and charts.
+- Role-based access control.
+
+15. CONCLUSION
+The Student Management System demonstrates how a small web application can be developed using Flask, connected to PostgreSQL and deployed on a cloud platform. The project covers application development, database management, GitHub version control and cloud deployment.
+
+16. REFERENCES
+- Flask documentation
+- PostgreSQL documentation
+- GitHub documentation
+- Render documentation

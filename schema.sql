@@ -1,0 +1,8 @@
+CREATE TABLE students (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    roll_no VARCHAR(30) UNIQUE NOT NULL,
+    department VARCHAR(50) NOT NULL,
+    email VARCHAR(120),
+    marks INTEGER NOT NULL CHECK (marks BETWEEN 0 AND 100)
+);

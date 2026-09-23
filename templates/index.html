@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Student Management System</h1>
+        <p>Cloud-based student record management</p>
+        <a class="btn" href="{{ url_for('add_student') }}">+ Add Student</a>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="alert {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    <div class="card">
+        <h2>Student Records</h2>
+        {% if students %}
+        <div class="table-wrap">
+        <table>
+            <tr>
+                <th>ID</th><th>Name</th><th>Roll No</th><th>Department</th>
+                <th>Email</th><th>Marks</th><th>Action</th>
+            </tr>
+            {% for s in students %}
+            <tr>
+                <td>{{ s.id }}</td>
+                <td>{{ s.name }}</td>
+                <td>{{ s.roll_no }}</td>
+                <td>{{ s.department }}</td>
+                <td>{{ s.email }}</td>
+                <td>{{ s.marks }}</td>
+                <td class="actions">
+                    <a href="{{ url_for('edit_student', student_id=s.id) }}">Edit</a>
+                    <form action="{{ url_for('delete_student', student_id=s.id) }}" method="POST"
+                          onsubmit="return confirm('Delete this student?');">
+                        <button class="delete" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+        {% else %}
+            <p class="empty">No students added yet.</p>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>

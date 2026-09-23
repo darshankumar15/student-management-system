@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container small">
+    <div class="card">
+        <h1>{{ title }}</h1>
+        <form method="POST">
+            <label>Name</label>
+            <input name="name" required value="{{ student.name if student else '' }}">
+
+            <label>Roll Number</label>
+            <input name="roll_no" required value="{{ student.roll_no if student else '' }}">
+
+            <label>Department</label>
+            <select name="department" required>
+                {% for d in ["CSE","ECE","EEE","MECH","CIVIL","IT"] %}
+                <option value="{{ d }}" {% if student and student.department == d %}selected{% endif %}>{{ d }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Email</label>
+            <input type="email" name="email" value="{{ student.email if student else '' }}">
+
+            <label>Marks</label>
+            <input type="number" name="marks" min="0" max="100" required
+                   value="{{ student.marks if student else '' }}">
+
+            <button class="btn" type="submit">Save</button>
+            <a class="cancel" href="{{ url_for('index') }}">Cancel</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>
