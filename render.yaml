@@ -2,6 +2,7 @@ services:
   - type: web
     name: student-management-system
     runtime: python
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: python -c "from app import init_db; init_db()" && gunicorn app:app
     envVars:
@@ -14,3 +15,4 @@ services:
 
 databases:
   - name: student-db
+    plan: free
